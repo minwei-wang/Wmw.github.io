@@ -26,7 +26,7 @@
         #map {
             flex: 1;
             height: 100%;
-            position: relative; /* 用于绝对定位微件 */
+            position: relative; 
         }
         #baseGallery-container {
             width: 200px;
@@ -34,7 +34,7 @@
             border-left: 1px solid #ddd;
             padding: 10px;
         }
-        /* 添加微件的样式 */
+      
         .esri-widget {
             border: 1px solid #ccc;
             background-color: white;
@@ -69,51 +69,51 @@
             "esri/views/MapView"
         ], (FeatureLayer, BasemapGallery, ScaleBar, Legend, Search, LayerList, Map, MapView) => {
             const map = new Map({
-                basemap: "topo-vector" // 使用任意一个底图
+                basemap: "topo-vector" 
             });
 
             const view = new MapView({
-                container: "map", // 引用 HTML 中的视图 div
+                container: "map",
                 map: map,
-                center: [102, 35], // 中国的地理中心点
-                zoom: 3 // 缩放级别调整为3，以显示整个中国
+                center: [102, 35],
+                zoom: 3
             });
 
-            // 添加专题图层
+            
             const trailheadsLayer = new FeatureLayer({
                 url: "https://www.geosceneonline.cn/server/rest/services/Hosted/省5/FeatureServer/0" // 替换为实际的FeatureLayer URL
             });
             map.add(trailheadsLayer);
 
-            // 添加比例尺
+          
             const scaleBar = new ScaleBar({
                 view: view,
                 unit: "metric"
             });
             view.ui.add(scaleBar, "bottom-left");
 
-            // 添加图例
+            
             const legend = new Legend({
                 view: view
             });
             view.ui.add(legend, "bottom-right");
 
-            // 添加搜索框
+           
             const search = new Search({
                 view: view
             });
             view.ui.add(search, "top-right");
 
-            // 添加图层列表
+            
             const layerList = new LayerList({
                 view: view
             });
             view.ui.add(layerList, "top-right");
 
-            // 添加底图库
+
             const basemapGallery = new BasemapGallery({
                 view: view,
-                container: "baseGallery" // 引用 HTML 中的底图库 div
+                container: "baseGallery" 
             });
         });
     </script>
